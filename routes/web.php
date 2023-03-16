@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\admin\BatchController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,6 +35,13 @@ Route::get('/dashboard', function () {
 Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::controller(AdminController::class)->group(function (){
         Route::get('/admin/dashboard','index')->name('admin.dashboard');
+    });
+    Route::controller(BatchController::class)->group(function (){
+        Route::get('/admin/batch','CreateBatch')->name('manage.batch');
+        Route::post('/batch/store','storeBatch')->name('store.batch');
+        Route::post('/batch/update','updateBatch')->name('update.batch');
+        Route::get('/batch/edit','editBatch')->name('edit.batch');
+        Route::get('/batch/delete','deleteBatch')->name('delete.batch');
     });
 });
 

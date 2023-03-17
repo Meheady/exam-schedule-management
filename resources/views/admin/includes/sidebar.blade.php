@@ -23,15 +23,19 @@
         <div id="moduleone" class="collapse">
             <div class="bg-white collapse-inner">
                 <a class="collapse-item " href="{{ route('manage.batch') }}">Manage Batch</a>
+                <a class="collapse-item " href="{{ route('manage.section') }}">Manage Section</a>
+                <a class="collapse-item " href="{{ route('manage.semester') }}">Manage Semester</a>
+                <a class="collapse-item " href="{{ route('manage.course') }}">Manage Course</a>
+                <a class="collapse-item " href="{{ route('manage.department') }}">Manage Department</a>
             </div>
         </div>
     </li>
 
 
     <!-- Sidebar Toggler (Sidebar) -->
-    <div class="text-center d-none d-md-inline">
-        <button class="rounded-circle border-0" id="sidebarToggle"></button>
-    </div>
+{{--    <div class="text-center d-none d-md-inline">--}}
+{{--        <button class="rounded-circle border-0" id="sidebarToggle"></button>--}}
+{{--    </div>--}}
 
 </ul>
 <!-- End of Sidebar -->

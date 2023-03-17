@@ -18,21 +18,21 @@
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#moduleone">
             <i class="fas fa-fw fa-bars fa-2x"></i>
-            <span style="font-weight: bolder;font-size: 18px">Components</span>
+            <span style="font-weight: bolder;font-size: 18px">Examination</span>
         </a>
         <div id="moduleone" class="collapse">
             <div class="bg-white collapse-inner">
-                <a class="collapse-item " href="buttons.html">Buttons</a>
-                <a class="collapse-item" href="cards.html">Cards</a>
+                <a class="collapse-item" href="{{ route('get.admit.card') }}">Admit Card</a>
+                <a class="collapse-item" href="cards.html">Exam Schedule</a>
             </div>
         </div>
     </li>
 
 
-    <!-- Sidebar Toggler (Sidebar) -->
-    <div class="text-center d-none d-md-inline">
-        <button class="rounded-circle border-0" id="sidebarToggle"></button>
-    </div>
+{{--    <!-- Sidebar Toggler (Sidebar) -->--}}
+{{--    <div class="text-center d-none d-md-inline">--}}
+{{--        <button class="rounded-circle border-0" id="sidebarToggle"></button>--}}
+{{--    </div>--}}
 
 </ul>
 <!-- End of Sidebar -->

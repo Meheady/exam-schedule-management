@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('semesters', function (Blueprint $table) {
             $table->id();
+            $table->string('semester_name')->nullable();
+            $table->string('update_by')->nullable();
             $table->timestamps();
         });
     }

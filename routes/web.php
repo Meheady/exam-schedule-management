@@ -6,6 +6,11 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\admin\BatchController;
+use App\Http\Controllers\admin\SectionController;
+use App\Http\Controllers\admin\AdmitController;
+use App\Http\Controllers\admin\CourseController;
+use App\Http\Controllers\admin\SemesterController;
+use App\Http\Controllers\admin\DepartmentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,7 +46,35 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
         Route::post('/batch/store','storeBatch')->name('store.batch');
         Route::post('/batch/update','updateBatch')->name('update.batch');
         Route::get('/batch/edit','editBatch')->name('edit.batch');
-        Route::get('/batch/delete','deleteBatch')->name('delete.batch');
+        Route::get('/batch/delete/{id}','deleteBatch')->name('delete.batch');
+    });
+    Route::controller(SectionController::class)->group(function (){
+        Route::get('/create/section','CreateSection')->name('manage.section');
+        Route::post('/section/store','storeSection')->name('store.section');
+        Route::post('/section/update','updateSection')->name('update.section');
+        Route::get('/section/edit','editSection')->name('edit.section');
+        Route::get('/section/delete/{id}','deleteSection')->name('delete.section');
+    });
+    Route::controller(SemesterController::class)->group(function (){
+        Route::get('/create/semester','CreateSemester')->name('manage.semester');
+        Route::post('/semester/store','storeSemester')->name('store.semester');
+        Route::post('/semester/update','updateSemester')->name('update.semester');
+        Route::get('/semester/edit','editSemester')->name('edit.semester');
+        Route::get('/semester/delete/{id}','deleteSemester')->name('delete.semester');
+    });
+    Route::controller(CourseController::class)->group(function (){
+        Route::get('/create/course','CreateCourse')->name('manage.course');
+        Route::post('/course/store','storeCourse')->name('store.course');
+        Route::post('/course/update/{id}','updateCourse')->name('update.course');
+        Route::get('/course/edit/{id}','editCourse')->name('edit.course');
+        Route::get('/course/delete/{id}','deleteCourse')->name('delete.course');
+    });
+    Route::controller(DepartmentController::class)->group(function (){
+        Route::get('/create/department','CreateDepartment')->name('manage.department');
+        Route::post('/department/store','storeDepartment')->name('store.department');
+        Route::post('/department/update','updateDepartment')->name('update.department');
+        Route::get('/department/edit/{id}','editDepartment')->name('edit.department');
+        Route::get('/department/delete/{id}','deleteDepartment')->name('delete.department');
     });
 });
 
@@ -49,6 +82,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 Route::middleware(['auth', 'role:student'])->group(function () {
     Route::controller(StudentController::class)->group(function (){
         Route::get('/student/dashboard','index')->name('student.dashboard');
+        Route::get('/admit/card','getAdmit')->name('get.admit.card');
     });
 });
 

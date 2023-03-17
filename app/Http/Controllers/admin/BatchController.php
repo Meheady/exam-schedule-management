@@ -25,4 +25,10 @@ class BatchController extends Controller
 
         return redirect()->back()->with('success','Batch save successfully');
     }
+
+    public function deleteBatch($id)
+    {
+        Batch::find($id)->delete();
+        return redirect()->back()->with('success','Section delete successfully');
+    }
 }

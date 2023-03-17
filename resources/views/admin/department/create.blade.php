@@ -6,7 +6,7 @@
 
         <!-- Page Heading -->
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Batch</h1>
+            <h1 class="h3 mb-0 text-gray-800">Department</h1>
             {{--            <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i--}}
             {{--                    class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>--}}
         </div>
@@ -14,11 +14,15 @@
         <div class="row">
             <div class="col-md-7">
                 <div class="card shadow p-2">
-                    <form method="post" action="{{ route('store.batch') }}">
+                    <form method="post" action="{{ route('store.department') }}">
                         @csrf
                         <div class="form-group">
-                            <label for="exampleInputEmail1">Batch Name</label>
-                            <input type="text" required class="form-control" name="batch_name">
+                            <label for="exampleInputEmail1">Department Short Name</label>
+                            <input type="text" required class="form-control" name="dep_short_name">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Department Full Name</label>
+                            <input type="text" required class="form-control" name="dep_full_name">
                         </div>
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </form>
@@ -33,7 +37,8 @@
                         <thead>
                         <tr>
                             <th>SL</th>
-                            <th>Batch Name</th>
+                            <th>Department Short Name</th>
+                            <th>Department Full Name</th>
                             <th>Action</th>
                         </tr>
                         </thead>
@@ -41,10 +46,11 @@
                        @foreach($allData as $item)
                        <tr>
                            <td>{{ $loop->iteration }}</td>
-                           <td>{{ $item->batch_name }}</td>
+                           <td>{{ $item->department_short_name }}</td>
+                           <td>{{ $item->department_full_name }}</td>
                            <td>
-                               <a href="" class="btn btn-success">Edit</a>
-                               <a href="{{ route('delete.batch',$item->id) }}" onclick="return confirm('Are you sure?')" class="btn btn-danger">Delete</a>
+                               <a href="{{ route('edit.department',$item->id) }}" class="btn btn-success">Edit</a>
+                               <a href="{{ route('delete.department',$item->id) }}" onclick="return confirm('Are you sure?')" class="btn btn-danger">Delete</a>
                            </td>
                        </tr>
                        @endforeach

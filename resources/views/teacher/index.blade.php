@@ -1,4 +1,4 @@
-@extends('teacher.student-master')
+@extends('teacher.teacher-master')
 
 @section('teacher-main')
     <!-- Begin Page Content -->

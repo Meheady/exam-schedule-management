@@ -18,9 +18,31 @@
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#moduleone">
             <i class="fas fa-fw fa-bars fa-2x"></i>
-            <span style="font-weight: bolder;font-size: 18px">Setup</span>
+            <span style="font-weight: bolder;font-size: 18px">Registration</span>
         </a>
         <div id="moduleone" class="collapse">
+            <div class="bg-white collapse-inner">
+                <a class="collapse-item " href="{{ route('new.registration') }}">New Registration</a>
+            </div>
+        </div>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#moduletwo">
+            <i class="fas fa-fw fa-bars fa-2x"></i>
+            <span style="font-weight: bolder;font-size: 18px">Admit Card</span>
+        </a>
+        <div id="moduletwo" class="collapse">
+            <div class="bg-white collapse-inner">
+                <a class="collapse-item " href="{{ route('admit.generate') }}">Admit Generate</a>
+            </div>
+        </div>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#module3">
+            <i class="fas fa-fw fa-bars fa-2x"></i>
+            <span style="font-weight: bolder;font-size: 18px">Setup</span>
+        </a>
+        <div id="module3" class="collapse">
             <div class="bg-white collapse-inner">
                 <a class="collapse-item " href="{{ route('manage.batch') }}">Manage Batch</a>
                 <a class="collapse-item " href="{{ route('manage.section') }}">Manage Section</a>

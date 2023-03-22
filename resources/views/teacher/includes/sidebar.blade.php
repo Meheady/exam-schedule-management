@@ -18,12 +18,11 @@
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#moduleone">
             <i class="fas fa-fw fa-bars fa-2x"></i>
-            <span style="font-weight: bolder;font-size: 18px">Components</span>
+            <span style="font-weight: bolder;font-size: 18px">Admit</span>
         </a>
         <div id="moduleone" class="collapse">
             <div class="bg-white collapse-inner">
-                <a class="collapse-item " href="buttons.html">Buttons</a>
-                <a class="collapse-item" href="cards.html">Cards</a>
+                <a class="collapse-item " href="{{ route('admit.verify',12) }}">Verify Admit</a>
             </div>
         </div>
     </li>

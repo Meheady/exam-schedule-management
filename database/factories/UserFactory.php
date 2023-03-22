@@ -30,6 +30,7 @@ class UserFactory extends Factory
             'shift'=>fake()->randomElement(['EA','EB']),
             'batch'=>fake()->randomElement(['201','202']),
             'department'=>fake()->randomElement(['CSE','EEE']),
+            'student_id' => '201' . fake()->unique()->numberBetween(100000, 999999),
             'remember_token'=>Str::random(10),
         ];
     }

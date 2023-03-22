@@ -11,6 +11,8 @@ use App\Http\Controllers\admin\AdmitController;
 use App\Http\Controllers\admin\CourseController;
 use App\Http\Controllers\admin\SemesterController;
 use App\Http\Controllers\admin\DepartmentController;
+use App\Http\Controllers\admin\RegistrationController;
+use App\Http\Controllers\admin\AdmitVerifyController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,11 +33,11 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-//Route::middleware('auth')->group(function () {
-//    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-//    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-//    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-//});
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
 
 Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::controller(AdminController::class)->group(function (){
@@ -76,6 +78,15 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
         Route::get('/department/edit/{id}','editDepartment')->name('edit.department');
         Route::get('/department/delete/{id}','deleteDepartment')->name('delete.department');
     });
+    Route::controller(RegistrationController::class)->group(function (){
+        Route::get('/student/registration','newRegistration')->name('new.registration');
+        Route::post('/store/registration','storeRegistration')->name('store.registration');
+    });
+
+    Route::controller(AdmitController::class)->group(function (){
+        Route::get('/admit/generate','admitGenerate')->name('admit.generate');
+        Route::post('/store/admit','storeAdmit')->name('store.admit');
+    });
 });
 
 
@@ -90,6 +101,12 @@ Route::middleware(['auth', 'role:student'])->group(function () {
 Route::middleware(['auth', 'role:teacher'])->group(function () {
     Route::controller(TeacherController::class)->group(function (){
         Route::get('/teacher/dashboard','index')->name('teacher.dashboard');
+    });
+});
+
+Route::middleware(['auth', 'role:teacher'])->group(function () {
+    Route::controller(AdmitVerifyController::class)->group(function (){
+        Route::get('/admit/verify/{sid}','admitVerify')->name('admit.verify');
     });
 });
 

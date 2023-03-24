@@ -86,6 +86,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::controller(AdmitController::class)->group(function (){
         Route::get('/admit/generate','admitGenerate')->name('admit.generate');
         Route::post('/store/admit','storeAdmit')->name('store.admit');
+        Route::get('/delete/admit/{id}','deleteAdmit')->name('delete.admit');
     });
 });
 

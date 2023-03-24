@@ -91,6 +91,18 @@
                             <td></td>
                             <td style=" padding-top: 40px" align="center">Controller of Examinations</td>
                         </tr>
+                        <tr height="60">
+                            <td colspan="3">Code of conduct to be followed by the student in the Examination hall:</td>
+                        </tr>
+                        <tr height="60">
+                            <td colspan="3">
+                                <ul>
+                                    <li>1. </li>
+                                    <li>2. </li>
+                                    <li>3. </li>
+                                </ul>
+                            </td>
+                        </tr>
                         </tr>
                     </table>
                 </div>

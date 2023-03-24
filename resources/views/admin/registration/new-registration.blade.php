@@ -45,7 +45,7 @@
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Session Name</label>
-                            <input type="text" required class="form-control" name="session">
+                            <input type="text" required class="form-control" name="sessions">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Subject</label>
@@ -71,19 +71,19 @@
                             <th>SL</th>
                             <th>Student Name</th>
                             <th>Session</th>
-                            <th>Action</th>
+{{--                            <th>Action</th>--}}
                         </tr>
                         </thead>
                         <tbody>
                         @foreach($allData as $item)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
-                                <td>{{ $item->student_id }}</td>
-                                <td>{{ $item->session_id }}</td>
-                                <td>
-                                    <a href="{{ route('edit.course',$item->id) }}" class="btn btn-success">Edit</a>
-                                    <a href="{{ route('delete.course',$item->id) }}" onclick="return confirm('Are you sure?')" class="btn btn-danger">Delete</a>
-                                </td>
+                                <td>{{ $item->student->name  }}</td>
+                                <td>{{ $item->session }}</td>
+{{--                                <td>--}}
+{{--                                    <a href="{{ route('edit.course',$item->id) }}" class="btn btn-success">Edit</a>--}}
+{{--                                    <a href="{{ route('delete.course',$item->id) }}" onclick="return confirm('Are you sure?')" class="btn btn-danger">Delete</a>--}}
+{{--                                </td>--}}
                             </tr>
                         @endforeach
                         </tbody>

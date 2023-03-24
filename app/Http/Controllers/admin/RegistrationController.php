@@ -32,7 +32,7 @@ class RegistrationController extends Controller
         $register->student_id = $request->student;
         $register->section_id = $request->section;
         $register->semester_id = $request->student;
-        $register->session = $request->student;
+        $register->session = $request->sessions;
         $register->subject = json_encode($request->subject);
 
         $register->save();

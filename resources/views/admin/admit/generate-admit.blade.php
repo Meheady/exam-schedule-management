@@ -6,7 +6,7 @@
 
         <!-- Page Heading -->
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Course</h1>
+            <h1 class="h3 mb-0 text-gray-800">Admit Card Generate</h1>
             {{--            <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i--}}
             {{--                    class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>--}}
         </div>
@@ -51,11 +51,10 @@
                         @foreach($allData as $item)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
-                                <td>{{ $item->student_id }}</td>
+                                <td>{{ $item->student->name }}</td>
                                 <td>{{ $item->exam_type }}</td>
                                 <td>
-                                    <a href="{{ route('edit.course',$item->id) }}" class="btn btn-success">Edit</a>
-                                    <a href="{{ route('delete.course',$item->id) }}" onclick="return confirm('Are you sure?')" class="btn btn-danger">Delete</a>
+                                    <a href="{{ route('delete.admit',$item->id) }}" onclick="return confirm('Are you sure?')" class="btn btn-danger">Delete</a>
                                 </td>
                             </tr>
                         @endforeach

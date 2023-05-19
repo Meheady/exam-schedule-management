@@ -38,6 +38,17 @@
         </div>
     </li>
     <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#modulethree">
+            <i class="fas fa-fw fa-bars fa-2x"></i>
+            <span style="font-weight: bolder;font-size: 18px">Exam Schedule</span>
+        </a>
+        <div id="modulethree" class="collapse">
+            <div class="bg-white collapse-inner">
+                <a class="collapse-item" href="{{ route('exam.schedule') }}">Eve Shift</a>
+            </div>
+        </div>
+    </li>
+    <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#module3">
             <i class="fas fa-fw fa-bars fa-2x"></i>
             <span style="font-weight: bolder;font-size: 18px">Setup</span>

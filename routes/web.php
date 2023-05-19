@@ -13,6 +13,7 @@ use App\Http\Controllers\admin\SemesterController;
 use App\Http\Controllers\admin\DepartmentController;
 use App\Http\Controllers\admin\RegistrationController;
 use App\Http\Controllers\admin\AdmitVerifyController;
+use App\Http\Controllers\admin\ExamScheduleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -87,6 +88,11 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
         Route::get('/admit/generate','admitGenerate')->name('admit.generate');
         Route::post('/store/admit','storeAdmit')->name('store.admit');
         Route::get('/delete/admit/{id}','deleteAdmit')->name('delete.admit');
+    });
+    Route::controller(ExamScheduleController::class)->group(function (){
+        Route::get('/exam/schedule','examSchedule')->name('exam.schedule');
+        Route::post('/date-range','dateRange')->name('date-range');
+        Route::post('/schedule','schedule');
     });
 });
 

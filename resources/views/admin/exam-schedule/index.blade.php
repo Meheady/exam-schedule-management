@@ -48,7 +48,7 @@
                         <div class="from-group row">
                             <label for="target_days" class="col-form-label col-md-5"></label>
                             <div class="col-md-7">
-                                <button class="btn btn-success mt-2">Get Date</button>
+                                <button class="btn btn-success mt-2 btn-block">Get Date</button>
                             </div>
                         </div>
                     </form>
@@ -64,6 +64,17 @@
                                 <label for="exam_name" class="col-form-label col-md-3">Exam Name:</label>
                                 <div class="col-md-7">
                                     <input type="text" name="exam_name" id="exam_name" class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="exam_name" class="col-form-label col-md-3">Department:</label>
+                                <div class="col-md-7">
+                                    <select name="department[]" class="form-control" id="department">
+                                        <option value="" disabled selected>Select Department</option>
+                                        @foreach($department as $item)
+                                            <option value="{{ $item->id }}">{{ $item->department_full_name }}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
                             </div>
 
@@ -103,10 +114,8 @@
                                     <div class="form-group row">
                                         <label for="subject" class="col-form-label col-md-3">Subject:</label>
                                         <div class="col-md-7">
-                                            <select name="subject[]" class="form-control" id="">
-                                                @foreach($course as $item)
-                                                    <option value="{{ $item->course_name }}">{{ $item->course_name }}</option>
-                                                @endforeach
+                                            <select name="subject[]" class="form-control subject">
+
                                             </select>
                                           </div>
                                     </div>
@@ -125,33 +134,22 @@
 
         <div class="row">
             <div class="col-md-10 mx-auto">
-                <table class="table">
+                <table class="table table-striped">
                     <thead>
                     <tr>
-                        <th>Batch</th>
-                        <th>Date / Time</th>
-                        <th>Subject</th>
+                        <th>Exam Name</th>
+                        <th>Action</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <!-- Iterate over each batch -->
-                    @foreach ($scheduleByBatch as $batch => $schedule)
+                    <!-- Iterate over each exam -->
+                    @foreach ($exams as $exam)
                         <tr>
-                            <td rowspan="{{ count($schedule) }}">{{ $batch }}</td>
-                            <!-- Iterate over each schedule entry -->
-                            @foreach ($schedule as $index => $exam)
-                                <td>
-                                    {{ $exam['date'] }} - {{ $exam['time'] }}
-                                </td>
-                                <td>
-                                    {{ $exam['subject'] }}
-                                </td>
+                            <td>{{ $exam }}</td>
+                            <td>
+                                <a href="{{ route('download.schedule',$exam) }}" class="btn btn-success">Download</a>
+                            </td>
                         </tr>
-                        <!-- Add new row for subsequent entries -->
-                        @if ($index + 1 < count($schedule))
-                            <tr>
-                        @endif
-                    @endforeach
                     @endforeach
                     </tbody>
                 </table>
@@ -203,10 +201,8 @@
         <div class="form-group row">
             <label for="subject" class="col-form-label col-md-3">Subject:</label>
             <div class="col-md-7">
-                <select name="subject[]" class="form-control" id="">
-                    @foreach($course as $item)
-                <option value="{{ $item->course_name }}">{{ $item->course_name }}</option>
-                    @endforeach
+                <select name="subject[]" class="form-control subject">
+
                 </select>
             </div>
         </div>
@@ -224,6 +220,27 @@
                 }
             });
         });
+
+        $('#department').change(function () {
+            const id = $(this).val();
+
+           $.ajax({
+               url: "{{ url('/get-subject-ajax') }}/"+id,
+               type: "GET",
+               dataType: 'json',
+               success: function (res) {
+
+                   $('.subject').html('<option selected disabled>Select Subject</option>');
+                   $.each(res,function(key,value){
+                       $('.subject').append('<option value=" '+ value.course_name +'">'+ value.course_name +'</option>')
+                   });
+               },
+               error: function (err) {
+                   console.log(err);
+               }
+
+           });
+        })
     </script>
 @endsection
 

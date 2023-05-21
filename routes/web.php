@@ -93,6 +93,8 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
         Route::get('/exam/schedule','examSchedule')->name('exam.schedule');
         Route::post('/date-range','dateRange')->name('date-range');
         Route::post('/schedule','schedule');
+        Route::get('/get-subject-ajax/{id}','subjectAjax');
+        Route::get('/download/schedule/{exam}','downloadSchedule')->name('download.schedule');
     });
 });
 

@@ -45,6 +45,18 @@
         <div id="modulethree" class="collapse">
             <div class="bg-white collapse-inner">
                 <a class="collapse-item" href="{{ route('exam.schedule') }}">Eve Shift</a>
+                <a class="collapse-item" href="{{ route('all.schedule') }}">All Exam Schedule</a>
+            </div>
+        </div>
+    </li>
+        <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#modulefour">
+            <i class="fas fa-fw fa-bars fa-2x"></i>
+            <span style="font-weight: bolder;font-size: 18px">User Manage</span>
+        </a>
+        <div id="modulefour" class="collapse">
+            <div class="bg-white collapse-inner">
+                <a class="collapse-item" href="{{ route('all.student') }}">All Student</a>
             </div>
         </div>
     </li>

@@ -32,7 +32,7 @@ class ExamScheduleController extends Controller
 
         $exams = ExamSchedule::distinct('exam_name')->pluck('exam_name');
 
-        return view('admin.exam-schedule.index',compact('department','batchs','exams','course','schedules','uniqueDatesTimes','scheduleByBatch'));
+        return view('admin.exam-schedule.index',compact('department','batchs','course','schedules','uniqueDatesTimes','scheduleByBatch'));
     }
     public function dateRange(Request $request)
     {
@@ -129,5 +129,11 @@ class ExamScheduleController extends Controller
         Notification::send($users, new ExamScheduleNotification($formattedDate,$scheduleByBatch,$schedules,$firstRow));
 
         return redirect()->back();
+    }
+
+    public function allSchedule()
+    {
+        $exams = ExamSchedule::distinct('exam_name')->pluck('exam_name');
+        return view('admin.exam-schedule.schedule',compact('exams'));
     }
 }

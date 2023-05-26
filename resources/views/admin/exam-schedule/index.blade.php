@@ -130,33 +130,6 @@
                 </div>
             </div>
         </div>
-
-
-        <div class="row">
-            <div class="col-md-10 mx-auto">
-                <table class="table table-striped">
-                    <thead>
-                    <tr>
-                        <th>Exam Name</th>
-                        <th>Action</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <!-- Iterate over each exam -->
-                    @foreach ($exams as $exam)
-                        <tr>
-                            <td>{{ $exam }}</td>
-                            <td>
-                                <a href="{{ route('download.schedule',$exam) }}" class="btn btn-success">Download</a>
-                                <a href="{{ route('publish.schedule',$exam) }}" class="btn btn-success">Publish</a>
-                            </td>
-                        </tr>
-                    @endforeach
-                    </tbody>
-                </table>
-            </div>
-        </div>
-
     </div>
 
 

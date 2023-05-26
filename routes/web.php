@@ -14,6 +14,7 @@ use App\Http\Controllers\admin\DepartmentController;
 use App\Http\Controllers\admin\RegistrationController;
 use App\Http\Controllers\admin\AdmitVerifyController;
 use App\Http\Controllers\admin\ExamScheduleController;
+use App\Http\Controllers\admin\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -91,11 +92,20 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     });
     Route::controller(ExamScheduleController::class)->group(function (){
         Route::get('/exam/schedule','examSchedule')->name('exam.schedule');
+        Route::get('/all/schedule','allSchedule')->name('all.schedule');
         Route::post('/date-range','dateRange')->name('date-range');
         Route::post('/schedule','schedule');
         Route::get('/get-subject-ajax/{id}','subjectAjax');
         Route::get('/download/schedule/{exam}','downloadSchedule')->name('download.schedule');
         Route::get('/publish/schedule/{exam}','publishSchedule')->name('publish.schedule');
+    });
+    Route::controller(UserController::class)->group(function (){
+        Route::get('/all/student','allStudent')->name('all.student');
+        Route::get('/create/student','createStudent')->name('create.student');
+        Route::post('/store/student','storeStudent')->name('store.student');
+        Route::get('/edit/student/{id}','editStudent')->name('edit.student');
+        Route::post('/update/student/{id}','updateStudent')->name('update.student');
+        Route::get('/status/update/student/{id}','statusStudent')->name('update.student.status');
     });
 });
 

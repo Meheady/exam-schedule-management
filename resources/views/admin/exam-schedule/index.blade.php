@@ -148,6 +148,7 @@
                             <td>{{ $exam }}</td>
                             <td>
                                 <a href="{{ route('download.schedule',$exam) }}" class="btn btn-success">Download</a>
+                                <a href="{{ route('publish.schedule',$exam) }}" class="btn btn-success">Publish</a>
                             </td>
                         </tr>
                     @endforeach
@@ -164,6 +165,7 @@
         $(document).ready(function() {
             // Add more fields
             $('#addMore').click(function() {
+                getSubjectByDept()
                 var html = `
     <hr>
     <div class="schedule-group">
@@ -209,7 +211,9 @@
     </div>
 `;
 
-                $('#additionalFields').append(html);
+                var newGroup = $(html);
+                $('#additionalFields').append(newGroup);
+                getSubjectByDept(newGroup);
             });
 
             // Remove last fields
@@ -241,6 +245,27 @@
 
            });
         })
+        function getSubjectByDept(element) {
+            const id = $('#department').val();
+            var subjectInput = $(element).find('.subject'); // Find the subject input within the specific schedule group
+
+            $.ajax({
+                url: "{{ url('/get-subject-ajax') }}/" + id,
+                type: "GET",
+                dataType: 'json',
+                success: function (res) {
+                    subjectInput.html('<option selected disabled>Select Subject</option>');
+
+                    $.each(res, function (key, value) {
+                        subjectInput.append('<option value="' + value.course_name + '">' + value.course_name + '</option>');
+                    });
+                },
+                error: function (err) {
+                    console.log(err);
+                }
+            });
+        }
+
     </script>
 @endsection
 

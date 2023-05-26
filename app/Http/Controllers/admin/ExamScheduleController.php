@@ -7,8 +7,11 @@ use App\Models\Batch;
 use App\Models\Course;
 use App\Models\Department;
 use App\Models\ExamSchedule;
+use App\Models\User;
+use App\Notifications\ExamScheduleNotification;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Facades\Session;
 use Barryvdh\DomPDF\Facade\Pdf;
 
@@ -104,5 +107,27 @@ class ExamScheduleController extends Controller
     {
         $subject = Course::where('department_id',$id)->latest()->get();
         return response()->json($subject);
+    }
+
+    public function publishSchedule($exam)
+    {
+        $schedules = ExamSchedule::select('batch', 'date', 'time', 'subject')->where('exam_name',$exam)->orderBy('batch')->get();
+        // Group the schedules by batch for displaying in the table
+        $scheduleByBatch = $schedules->groupBy('batch')->toArray();
+        // Get the unique dates and times
+        $uniqueDatesTimes = $schedules->unique('date')->sortBy('date')->pluck('date');
+
+        $firstRow = ExamSchedule::select('exam_name')->where('exam_name',$exam)->orderBy('batch')->first();
+
+        $formattedDate = Carbon::parse($firstRow->date)->year;
+
+        $fileName = $firstRow->exam_name.'-'.$formattedDate;
+
+
+        $users = User::where('role','student')->get();
+
+        Notification::send($users, new ExamScheduleNotification($formattedDate,$scheduleByBatch,$schedules,$firstRow));
+
+        return redirect()->back();
     }
 }

@@ -126,7 +126,9 @@ Route::middleware(['auth', 'role:teacher'])->group(function () {
 
 Route::middleware(['auth', 'role:teacher'])->group(function () {
     Route::controller(AdmitVerifyController::class)->group(function (){
-        Route::get('/admit/verify/{sid}','admitVerify')->name('admit.verify');
+        Route::get('/admit/verify/','admitVerify')->name('admit.verify');
+        Route::get('/admit/verification/','admitVerification')->name('admit.verification');
+        Route::get('/admit/verification/qrcode/{id}','admitVerificationUrl');
     });
 });
 

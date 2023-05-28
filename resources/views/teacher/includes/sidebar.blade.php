@@ -22,7 +22,7 @@
         </a>
         <div id="moduleone" class="collapse">
             <div class="bg-white collapse-inner">
-                <a class="collapse-item " href="{{ route('admit.verification') }}">Verify Admit</a>
+                <a class="collapse-item " href="{{ route('admit.verify') }}">Verify Admit</a>
             </div>
         </div>
     </li>

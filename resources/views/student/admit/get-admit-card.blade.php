@@ -87,21 +87,9 @@
                                 </table>
                             </td>
                         <tr height="60">
-                            <td colspan="1">{!! QrCode::generate('http://127.0.0.1:8000/admit/verify/'.Auth::id()); !!}</td>
+                            <td colspan="1">{!! QrCode::generate('http://127.0.0.1:8000/admit/verification/qrcode/'.Auth::id()); !!}</td>
                             <td></td>
                             <td style=" padding-top: 40px" align="center">Controller of Examinations</td>
-                        </tr>
-                        <tr height="60">
-                            <td colspan="3">Code of conduct to be followed by the student in the Examination hall:</td>
-                        </tr>
-                        <tr height="60">
-                            <td colspan="3">
-                                <ul>
-                                    <li>1. </li>
-                                    <li>2. </li>
-                                    <li>3. </li>
-                                </ul>
-                            </td>
                         </tr>
                         </tr>
                     </table>

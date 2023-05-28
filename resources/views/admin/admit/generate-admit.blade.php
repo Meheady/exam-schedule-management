@@ -42,6 +42,7 @@
                         <thead>
                         <tr>
                             <th>SL</th>
+                            <th>Student Id</th>
                             <th>Student Name</th>
                             <th>Exam Type</th>
                             <th>Action</th>
@@ -51,6 +52,7 @@
                         @foreach($allData as $item)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
+                                <td>{{ $item->student->student_id }}</td>
                                 <td>{{ $item->student->name }}</td>
                                 <td>{{ $item->exam_type }}</td>
                                 <td>

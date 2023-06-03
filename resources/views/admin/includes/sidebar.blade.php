@@ -57,6 +57,7 @@
         <div id="modulefour" class="collapse">
             <div class="bg-white collapse-inner">
                 <a class="collapse-item" href="{{ route('all.student') }}">All Student</a>
+                <a class="collapse-item" href="{{ route('all.teacher') }}">All Teacher</a>
             </div>
         </div>
     </li>

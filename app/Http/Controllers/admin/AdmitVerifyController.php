@@ -30,7 +30,7 @@ class AdmitVerifyController extends Controller
                 $register = Registration::where('student_id', $user->id)->first();
                 return view('teacher.admit.admit-verify', compact('register', 'admit'));
             } else {
-                return view('teacher.admit.not-allow');
+                return view('teacher.admit.not-allow',compact('user'));
             }
         }
         else{
@@ -49,11 +49,11 @@ class AdmitVerifyController extends Controller
                 return view('teacher.admit.admit-verify',compact('register','admit'));
             }
             else{
-                return view('teacher.admit.not-allow');
+                return view('teacher.admit.not-allow',compact('user'));
             }
         }
         else{
-            return  redirect()->back();
+            return  redirect()->back()->with('success','Student not found');
         }
 
     }

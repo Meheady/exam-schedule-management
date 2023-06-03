@@ -106,6 +106,15 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
         Route::get('/edit/student/{id}','editStudent')->name('edit.student');
         Route::post('/update/student/{id}','updateStudent')->name('update.student');
         Route::get('/status/update/student/{id}','statusStudent')->name('update.student.status');
+
+//        teacher create update
+        Route::get('/all/teacher','allTeacher')->name('all.teacher');
+        Route::get('/create/teacher','createTeacher')->name('create.teacher');
+        Route::post('/store/teacher','storeTeacher')->name('store.teacher');
+        Route::get('/edit/teacher/{id}','editTeacher')->name('edit.teacher');
+        Route::post('/update/teacher/{id}','updateTeacher')->name('update.teacher');
+        Route::get('/status/update/teacher/{id}','statusTeacher')->name('update.teacher.status');
+
     });
 });
 

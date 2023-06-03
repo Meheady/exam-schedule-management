@@ -37,6 +37,10 @@
                                 <th>Name: </th>
                                 <td>{{ $admit->student->name }}</td>
                             </tr>
+                            <tr >
+                                <th style="background-color: #68ce68"> <b style="color:white">Exam Permission:</b></th>
+                                <td style="background-color: #68ce68"><b style="color:white">Approved</b></td>
+                            </tr>
                         </table>
                 </div>
             </div>

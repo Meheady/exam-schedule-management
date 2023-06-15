@@ -34,7 +34,7 @@ class AdmitVerifyController extends Controller
             }
         }
         else{
-                return  redirect()->back();
+                return  redirect()->back()->with('massage','Student not found');
             }
     }
     public function admitVerificationUrl($sid)

@@ -14,6 +14,10 @@
         <div class="row">
             <div id="printThis" class="col-md-10 mx-auto">
                 <div class="card shadow p-2">
+                    @if(Session::has('massage'))
+                        <h5 class="text-danger">{{ Session::get('massage') }}</h5>
+
+                    @endif
                     <form action="{{ route('admit.verification') }}" method="get">
                         <div class="form-group">
                             <label for="">Enter Student Id</label>

@@ -27,6 +27,7 @@ class UserTableSeeder extends Seeder
             'email'=>'student@green.edu.bd',
             'password'=>Hash::make('123'),
             'role'=>'student',
+            'student_id'=>'201015010',
             'status'=>'active'
             ],
             ['name'=>'Teacher',

@@ -22,6 +22,7 @@
                             <th>Image</th>
                             <th>Name</th>
                             <th>Email</th>
+                            <th>Student Id</th>
                             <th>Batch</th>
                             <th>Department</th>
                             <th>Status</th>
@@ -38,6 +39,7 @@
                                 </td>
                                 <td>{{ $item->name }}</td>
                                 <td>{{ $item->email }}</td>
+                                <td>{{ $item->student_id }}</td>
                                 <td>{{ $item->batch }}</td>
                                 <td>{{ $item->department }}</td>
                                 <td>

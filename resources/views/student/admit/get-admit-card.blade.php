@@ -87,7 +87,7 @@
                                 </table>
                             </td>
                         <tr height="60">
-                            <td colspan="1">{!! QrCode::generate('http://127.0.0.1:8000/admit/verification/qrcode/'.Auth::id()); !!}</td>
+                            <td colspan="1">{!! QrCode::generate('http://127.0.0.1:8000/admit/verification/qrcode/'.Auth::user()->student_id); !!}</td>
                             <td></td>
                             <td style=" padding-top: 40px" align="center">Controller of Examinations</td>
                         </tr>

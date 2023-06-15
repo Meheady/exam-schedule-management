@@ -29,6 +29,10 @@
                             <input type="text" class="form-control" id="phone" name="phone" placeholder="Enter your phone number">
                         </div>
                         <div class="form-group">
+                            <label for="phone">Student ID</label>
+                            <input type="text" class="form-control" id="student_id" name="student_id" placeholder="Enter Student ID">
+                        </div>
+                        <div class="form-group">
                             <label for="photo">Photo</label>
                             <input type="file" class="form-control-file" id="photo" name="photo">
                         </div>

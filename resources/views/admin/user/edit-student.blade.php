@@ -29,6 +29,10 @@
                             <input type="text" class="form-control" id="phone" value="{{ $user->phone }}" name="phone" placeholder="Enter your phone number">
                         </div>
                         <div class="form-group">
+                            <label for="phone">Student ID</label>
+                            <input type="text" class="form-control" id="student_id" value="{{ $user->student_id }}" name="student_id" placeholder="Enter Student ID">
+                        </div>
+                        <div class="form-group">
                             <label for="photo">Photo</label>
                             <input type="file" class="form-control-file" id="photo" name="photo">
                             <img src="{{ asset($user->photo) }}" width="50px" height="50px" alt="">

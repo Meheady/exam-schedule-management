@@ -97,7 +97,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
         Route::post('/schedule','schedule');
         Route::get('/get-subject-ajax/{id}','subjectAjax');
         Route::get('/download/schedule/{exam}','downloadSchedule')->name('download.schedule');
-        Route::get('/publish/schedule/{exam}','publishSchedule')->name('publish.schedule');
+        Route::get('/publish/schedule/{exam}/{dept}','publishSchedule')->name('publish.schedule');
     });
     Route::controller(UserController::class)->group(function (){
         Route::get('/all/student','allStudent')->name('all.student');

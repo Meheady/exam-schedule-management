@@ -30,7 +30,7 @@
 
                             <td>
                                 <a href="{{ route('download.schedule', $exam->exam_name) }}" class="btn btn-success"><i class="fa fa-download" aria-hidden="true"></i></a>
-                                <a href="{{ route('publish.schedule', $exam->exam_name) }}" class="btn btn-success">Publish</a>
+                                <a href="{{ route('publish.schedule', [$exam->exam_name, $exam->department] ) }}" class="btn btn-success">Publish</a>
                             </td>
                         </tr>
                     @endforeach

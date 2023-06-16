@@ -112,7 +112,7 @@ class ExamScheduleController extends Controller
         return response()->json($subject);
     }
 
-    public function publishSchedule($exam)
+    public function publishSchedule($exam,$dept)
     {
         $schedules = ExamSchedule::select('batch', 'date', 'time', 'subject')->where('exam_name',$exam)->orderBy('batch')->get();
         // Group the schedules by batch for displaying in the table
@@ -127,11 +127,11 @@ class ExamScheduleController extends Controller
         $fileName = $firstRow->exam_name.'-'.$formattedDate;
 
 
-        $users = User::where('role','student')->get();
+        $users = User::where('role','student')->where('department',$dept)->get();
 
         Notification::send($users, new ExamScheduleNotification($formattedDate,$scheduleByBatch,$schedules,$firstRow));
 
-        return redirect()->back();
+        return redirect()->back()->with('success','Email sent successfully');
     }
 
     public function allSchedule()

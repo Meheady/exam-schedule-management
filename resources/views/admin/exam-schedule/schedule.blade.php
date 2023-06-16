@@ -17,6 +17,7 @@
                     <thead>
                     <tr>
                         <th>Exam Name</th>
+                        <th>Department</th>
                         <th>Action</th>
                     </tr>
                     </thead>
@@ -24,18 +25,23 @@
                     <!-- Iterate over each exam -->
                     @foreach ($exams as $exam)
                         <tr>
-                            <td>{{ $exam }}</td>
+                            <td>{{ $exam->exam_name }}</td>
+                            <td>{{ $exam->department }}</td>
+
                             <td>
-                                <a href="{{ route('download.schedule',$exam) }}" class="btn btn-success"><i class="fa fa-download" aria-hidden="true"></i></a>
-                                <a href="{{ route('publish.schedule',$exam) }}" class="btn btn-success">Publish</a>
+                                <a href="{{ route('download.schedule', $exam->exam_name) }}" class="btn btn-success"><i class="fa fa-download" aria-hidden="true"></i></a>
+                                <a href="{{ route('publish.schedule', $exam->exam_name) }}" class="btn btn-success">Publish</a>
                             </td>
                         </tr>
                     @endforeach
+
                     </tbody>
                 </table>
             </div>
         </div>
 
     </div>
+
+
 
 @endsection

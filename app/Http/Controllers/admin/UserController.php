@@ -144,6 +144,7 @@ class UserController extends Controller
             'department'=>$request->department,
             'photo'=> $this->getImage($request->file('photo')),
             'address'=>$request->address,
+            'role'=>'teacher',
             'status'=>$request->status,
         ]);
         return redirect()->back()->with('success','Teacher create successfully');
@@ -190,6 +191,7 @@ class UserController extends Controller
                 'department'=>$request->department,
                 'photo'=> $this->getImage($request->file('photo')),
                 'address'=>$request->address,
+                'role'=>'teacher',
                 'status'=>$request->status,
             ]);
 
@@ -202,6 +204,7 @@ class UserController extends Controller
                 'phone'=>$request->phone,
                 'department'=>$request->department,
                 'address'=>$request->address,
+                'role'=>'teacher',
                 'status'=>$request->status,
             ]);
             return redirect()->route('all.student')->with('success','Teacher Update successfully');

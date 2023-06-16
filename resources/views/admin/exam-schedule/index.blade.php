@@ -69,7 +69,7 @@
                             <div class="form-group row">
                                 <label for="exam_name" class="col-form-label col-md-3">Department:</label>
                                 <div class="col-md-7">
-                                    <select name="department[]" class="form-control" id="department">
+                                    <select name="department" class="form-control" id="department">
                                         <option value="" disabled selected>Select Department</option>
                                         @foreach($department as $item)
                                             <option value="{{ $item->id }}">{{ $item->department_full_name }}</option>

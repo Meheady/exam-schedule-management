@@ -67,9 +67,12 @@ class ExamScheduleController extends Controller
 
         $count = count($request->batch);
 
+        $department = Department::find($request->department);
+
         for ($i= 0;$i < $count;$i++){
             ExamSchedule::create([
                 'exam_name' => $request->exam_name,
+                'department' => $department->department_short_name,
                 'batch' => $request->batch[$i],
                 'date' => $request->date[$i],
                 'time' => $request->time[$i],
@@ -133,7 +136,8 @@ class ExamScheduleController extends Controller
 
     public function allSchedule()
     {
-        $exams = ExamSchedule::distinct('exam_name')->pluck('exam_name');
+        $exams = ExamSchedule::select('exam_name', 'department')->distinct('exam_name')->get();
+
         return view('admin.exam-schedule.schedule',compact('exams'));
     }
 }
